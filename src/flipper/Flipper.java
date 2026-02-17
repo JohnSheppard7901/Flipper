@@ -44,19 +44,6 @@ public class Flipper {
         return instance;
     }
 
-//    private void createTargets(){
-//        for (int i = 0; i <= 5; i++){
-//            Target target = new Target();
-//            targetList.add(target);
-//        }
-//    }
-//    private void createBumpers(){
-//        for (int i = 0; i <= 7; i++){
-//            Bumper bumper = new Bumper();
-//            bumpers.add(bumper);
-//        }
-//    }
-
     public void configure(List<Target> targets, List<Bumper> bumpers, ActionRamp actionRamp){
         this.targetList = targets;
         this.bumpers = bumpers;
