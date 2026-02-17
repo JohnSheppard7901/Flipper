@@ -22,10 +22,10 @@ public class Flipper {
     private int credit;
     private int points;
 
-    private final TargetMediator mediator;
-    private final List<Target> targetList = new ArrayList<>();
-    private final ActionRamp actionRamp = new ActionRamp();
-    private final List<Bumper> bumpers = new ArrayList<>();
+    private TargetMediator mediator;
+    private List<Target> targetList;
+    private ActionRamp actionRamp;
+    private List<Bumper> bumpers;
     private final BallController ball = new BallController();
 
     private DisplayFactory displayFactory;
@@ -35,9 +35,6 @@ public class Flipper {
     private Flipper(){ //Konstruktor ist private, damit niemand den Flipper automat erstellen kann außer diese Klasse selbst
         currentState = new NoCreditState();
         credit = 0;
-        createTargets();
-        createBumpers();
-        this.mediator = new TargetMediator(targetList, actionRamp);
     }
 
     public static Flipper getInstance() {
@@ -47,17 +44,25 @@ public class Flipper {
         return instance;
     }
 
-    private void createTargets(){
-        for (int i = 0; i <= 5; i++){
-            Target target = new Target();
-            targetList.add(target);
-        }
-    }
-    private void createBumpers(){
-        for (int i = 0; i <= 7; i++){
-            Bumper bumper = new Bumper();
-            bumpers.add(bumper);
-        }
+//    private void createTargets(){
+//        for (int i = 0; i <= 5; i++){
+//            Target target = new Target();
+//            targetList.add(target);
+//        }
+//    }
+//    private void createBumpers(){
+//        for (int i = 0; i <= 7; i++){
+//            Bumper bumper = new Bumper();
+//            bumpers.add(bumper);
+//        }
+//    }
+
+    public void configure(List<Target> targets, List<Bumper> bumpers, ActionRamp actionRamp){
+        this.targetList = targets;
+        this.bumpers = bumpers;
+        this.actionRamp = actionRamp;
+
+        this.mediator = new TargetMediator(targetList, actionRamp);
     }
 
     public void setCurrentState(State state){
