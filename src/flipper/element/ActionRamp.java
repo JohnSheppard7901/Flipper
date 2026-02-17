@@ -15,6 +15,11 @@ public class ActionRamp implements Element{
         }
     }
 
+    @Override
+    public int getPointsOnHit() {
+        return 0;
+    }
+
     public void open(){
         if (!isOpen){
             System.out.println("Action ramp opens.");
@@ -26,6 +31,7 @@ public class ActionRamp implements Element{
         if (children.isEmpty()) {
             for (int i = 0; i < 2; i++) children.add(new Bumper());
             for (int i = 0; i < 3; i++) children.add(new RampTarget());
+            children.add(new LegacyObstacleAdapter(new LegacyObstacle()));
         }
     }
 

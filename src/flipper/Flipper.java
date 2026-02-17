@@ -1,5 +1,7 @@
 package flipper;
 
+import flipper.abstractFactory.DisplayFactory;
+import flipper.abstractFactory.DisplayProduct;
 import flipper.ball.BallController;
 import flipper.command.Command;
 import flipper.element.ActionRamp;
@@ -16,6 +18,7 @@ public class Flipper {
 
     private static Flipper instance;
     private State currentState;
+
     private int credit;
     private int points;
 
@@ -23,7 +26,10 @@ public class Flipper {
     private final List<Target> targetList = new ArrayList<>();
     private final ActionRamp actionRamp = new ActionRamp();
     private final List<Bumper> bumpers = new ArrayList<>();
-    private BallController ball = new BallController();
+    private final BallController ball = new BallController();
+
+    private DisplayFactory displayFactory;
+    private DisplayProduct displayProduct;
 
 
     private Flipper(){ //Konstruktor ist private, damit niemand den Flipper automat erstellen kann außer diese Klasse selbst
@@ -95,10 +101,18 @@ public class Flipper {
         return this.mediator;
     }
 
-
     //ruft das command nur auf, macht nichts damit (Aufrufer)
     public void executeCommand(Command command){
         command.execute();
+    }
+
+    public void setDisplayFactory(DisplayFactory factory){
+        this.displayFactory = factory;
+        this.displayProduct = factory.createDisplay();
+    }
+
+    public DisplayProduct getDisplay(){
+        return this.displayProduct;
     }
 
 }

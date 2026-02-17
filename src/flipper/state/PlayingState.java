@@ -40,7 +40,8 @@ public class PlayingState extends State {
 
     private void flipperMoves(){
         if(!this.getGameContinues()){
-            System.out.println("You flip too late and miss the ball. Game over.");
+            System.out.println("You flip too late and miss the ball.");
+            Flipper.getInstance().getDisplay().showGameOver();
             System.out.println("Points scored: " + Flipper.getInstance().getPoints());
             if (Flipper.getInstance().getCredit() > 0){
                 Flipper.getInstance().setCurrentState(new ReadyState());

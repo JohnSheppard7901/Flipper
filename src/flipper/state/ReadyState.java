@@ -11,9 +11,11 @@ public class ReadyState extends State{
 
     @Override
     public void onStartButton() {
-        Flipper.getInstance().useCoin();
-        System.out.println("Ball launches!");
-        Flipper.getInstance().setCurrentState(new PlayingState());
+        Flipper flipper = Flipper.getInstance();
+
+        flipper.useCoin();
+        flipper.getDisplay().showPressStart();
+        flipper.setCurrentState(new PlayingState());
     }
 
     @Override

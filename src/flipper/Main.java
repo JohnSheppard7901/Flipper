@@ -1,22 +1,28 @@
 package flipper;
 
+import flipper.abstractFactory.BlockDisplayFactory;
+import flipper.abstractFactory.RetroDisplayFactory;
+
 public class Main {
 
     /*
 
     Patterns die im Projekt umgesetzt wurden:
-
-        ✅ Command Pattern
-        ✅ MacroCommand Erweiterung
-        ✅ Mediator Pattern
-        ✅ Composite Pattern
-        ✅ State Pattern
-        ✅ Singleton (Flipper)
+        - Singleton (Flipper)
+        - State Pattern
+        - Command Pattern
+        - MacroCommand Erweiterung
+        - Mediator Pattern
+        - Composite Pattern
+        - Adapter
+        - Abstract Factory
 
      */
 
     public static void main(String[] args) {
         Flipper flipper = Flipper.getInstance();
+        //flipper.setDisplayFactory(new BlockDisplayFactory());
+        flipper.setDisplayFactory(new RetroDisplayFactory());
 
         //check if start state is NoCreditState
         System.out.println("You are in the " + flipper.getCurrentState() + ".\n");
