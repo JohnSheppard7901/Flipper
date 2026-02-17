@@ -2,6 +2,7 @@ package flipper;
 
 import flipper.abstractFactory.BlockDisplayFactory;
 import flipper.abstractFactory.RetroDisplayFactory;
+import flipper.builder.GameInitializer;
 
 public class Main {
 
@@ -16,13 +17,14 @@ public class Main {
         - Composite Pattern
         - Adapter
         - Abstract Factory
-
+        - Builder
      */
 
     public static void main(String[] args) {
         Flipper flipper = Flipper.getInstance();
         //flipper.setDisplayFactory(new BlockDisplayFactory());
         flipper.setDisplayFactory(new RetroDisplayFactory());
+        GameInitializer.initializeGameTable();
 
         //check if start state is NoCreditState
         System.out.println("You are in the " + flipper.getCurrentState() + ".\n");
