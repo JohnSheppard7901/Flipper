@@ -17,7 +17,7 @@ public class Main {
         - Composite Pattern
         - Adapter
         - Abstract Factory
-
+        - Builder
      */
 
     public static void main(String[] args) {
